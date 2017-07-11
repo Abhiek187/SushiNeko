@@ -20,6 +20,8 @@ enum GameState {
 
 class GameScene: SKScene {
     /* Game objects */
+    var mat: SKSpriteNode!
+    var title: SKLabelNode!
     var sushiBasePiece: SushiPiece!
     var healthBar: SKSpriteNode!
     var scoreLabel: SKLabelNode!
@@ -54,6 +56,8 @@ class GameScene: SKScene {
         super.didMove(to: view)
         
         /* Connect game objects */
+        mat = childNode(withName: "mat") as! SKSpriteNode
+        title = childNode(withName: "title") as! SKLabelNode
         sushiBasePiece = childNode(withName: "sushiBasePiece") as! SushiPiece
         healthBar = childNode(withName: "healthBar") as! SKSpriteNode
         scoreLabel = childNode(withName: "scoreLabel") as! SKLabelNode
@@ -76,6 +80,10 @@ class GameScene: SKScene {
         playButton.selectedHandler = {
             /* Start game */
             self.state = .ready
+            
+            /* Hide title screen */
+            self.mat.isHidden = true
+            self.title.isHidden = true
         }
     }
     
@@ -172,7 +180,7 @@ class GameScene: SKScene {
             }
             
             /* Increment Health */
-            health += 0.1
+            health += 0.25
             
             /* Increment Score */
             score += 1
@@ -203,7 +211,7 @@ class GameScene: SKScene {
             return
         }
         /* Decrease health */
-        health -= 0.01
+        health -= 0.05
         /* Has the player run out of health? */
         if health < 0 {
             gameOver()
