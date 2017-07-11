@@ -25,6 +25,7 @@ class GameScene: SKScene {
     var sushiBasePiece: SushiPiece!
     var healthBar: SKSpriteNode!
     var scoreLabel: SKLabelNode!
+    var highScoreLabel: SKLabelNode!
     
     var health: CGFloat = 1.0 {
         didSet {
@@ -61,6 +62,7 @@ class GameScene: SKScene {
         sushiBasePiece = childNode(withName: "sushiBasePiece") as! SushiPiece
         healthBar = childNode(withName: "healthBar") as! SKSpriteNode
         scoreLabel = childNode(withName: "scoreLabel") as! SKLabelNode
+        highScoreLabel = childNode(withName: "highScoreLabel") as! SKLabelNode
         character = childNode(withName: "character") as! Character
         
         /* UI game objects */
@@ -235,6 +237,9 @@ class GameScene: SKScene {
         /* Make the player turn red */
         character.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.5))
         
+        /* Update high score */
+        playerScoreUpdate()
+        
         /* Change play button selection handler */
         playButton.selectedHandler = {
             
@@ -252,5 +257,20 @@ class GameScene: SKScene {
             /* Restart GameScene */
             skView?.presentScene(scene)
         }
+    }
+    
+    func playerScoreUpdate() {
+        /* Saves the high score of player */
+        let highScore = UserDefaults().integer(forKey: "highscore")
+        if score > highScore {
+            UserDefaults().set(score, forKey: "highscore")
+        }
+        /* Display high score below player's score */
+        highScoreLabel.fontName = "Papyrus"
+        highScoreLabel.fontSize = 36
+        highScoreLabel.fontColor = SKColor.green
+        highScoreLabel.position = CGPoint(x: 160, y: 272)
+        highScoreLabel.zPosition = 1001
+        highScoreLabel.text = "HighScore: \(highScore)"
     }
 }
