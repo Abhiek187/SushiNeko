@@ -182,7 +182,7 @@ class GameScene: SKScene {
             }
             
             /* Increment Health */
-            health += 0.25
+            health += 0.1
             
             /* Increment Score */
             score += 1
@@ -213,7 +213,7 @@ class GameScene: SKScene {
             return
         }
         /* Decrease health */
-        health -= 0.05
+        health -= 0.01
         /* Has the player run out of health? */
         if health < 0 {
             gameOver()
