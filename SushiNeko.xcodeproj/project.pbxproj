@@ -31,6 +31,7 @@
 		250888811F14141400F468C8 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250888801F14141400F468C8 /* MSButtonNode.swift */; };
 		25FB9F7C1F15090800AE6057 /* SushiPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FB9F7B1F15090800AE6057 /* SushiPiece.swift */; };
 		25FB9F7E1F150E2000AE6057 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FB9F7D1F150E2000AE6057 /* Character.swift */; };
+		25FB9F841F15223B00AE6057 /* AnimationActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 25FB9F831F15223B00AE6057 /* AnimationActions.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		250888801F14141400F468C8 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
 		25FB9F7B1F15090800AE6057 /* SushiPiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SushiPiece.swift; sourceTree = "<group>"; };
 		25FB9F7D1F150E2000AE6057 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		25FB9F831F15223B00AE6057 /* AnimationActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AnimationActions.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		2508884B1F1413C400F468C8 /* SushiNeko */ = {
 			isa = PBXGroup;
 			children = (
+				25FB9F831F15223B00AE6057 /* AnimationActions.sks */,
 				2508884C1F1413C400F468C8 /* AppDelegate.swift */,
 				2508884E1F1413C400F468C8 /* GameScene.sks */,
 				25FB9F7D1F150E2000AE6057 /* Character.swift */,
@@ -215,6 +218,7 @@
 				2508887A1F1413D200F468C8 /* roll@2x.png in Resources */,
 				250888721F1413D200F468C8 /* button@2x.png in Resources */,
 				250888511F1413C400F468C8 /* Actions.sks in Resources */,
+				25FB9F841F15223B00AE6057 /* AnimationActions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
