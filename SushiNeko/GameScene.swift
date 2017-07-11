@@ -21,6 +21,24 @@ enum GameState {
 class GameScene: SKScene {
     /* Game objects */
     var sushiBasePiece: SushiPiece!
+    var healthBar: SKSpriteNode!
+    var scoreLabel: SKLabelNode!
+    
+    var health: CGFloat = 1.0 {
+        didSet {
+            /* Cap Health */
+            if health > 1.0 { health = 1.0 }
+            
+            /* Scale health bar between 0.0 -> 1.0 e.g 0 -> 100% */
+            healthBar.xScale = health
+        }
+    }
+    
+    var score: Int = 0 {
+        didSet {
+            scoreLabel.text = String(score)
+        }
+    }
     
     /* Cat character */
     var character: Character!
@@ -37,6 +55,8 @@ class GameScene: SKScene {
         
         /* Connect game objects */
         sushiBasePiece = childNode(withName: "sushiBasePiece") as! SushiPiece
+        healthBar = childNode(withName: "healthBar") as! SKSpriteNode
+        scoreLabel = childNode(withName: "scoreLabel") as! SKLabelNode
         character = childNode(withName: "character") as! Character
         
         /* UI game objects */
@@ -150,6 +170,13 @@ class GameScene: SKScene {
                 /* No need to continue as player is dead */
                 return
             }
+            
+            /* Increment Health */
+            health += 0.1
+            
+            /* Increment Score */
+            score += 1
+            
             /* Remove from sushi tower array */
             sushiTower.removeFirst()
             
@@ -171,6 +198,17 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        /* Called before each frame is rendered */
+        if state != .playing {
+            return
+        }
+        /* Decrease health */
+        health -= 0.01
+        /* Has the player run out of health? */
+        if health < 0 {
+            gameOver()
+        }
+        
         moveTowerDown()
     }
     
