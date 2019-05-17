@@ -57,16 +57,16 @@ class GameScene: SKScene {
         super.didMove(to: view)
         
         /* Connect game objects */
-        mat = childNode(withName: "mat") as! SKSpriteNode
-        title = childNode(withName: "title") as! SKLabelNode
-        sushiBasePiece = childNode(withName: "sushiBasePiece") as! SushiPiece
-        healthBar = childNode(withName: "healthBar") as! SKSpriteNode
-        scoreLabel = childNode(withName: "scoreLabel") as! SKLabelNode
-        highScoreLabel = childNode(withName: "highScoreLabel") as! SKLabelNode
-        character = childNode(withName: "character") as! Character
+        mat = childNode(withName: "mat") as? SKSpriteNode
+        title = childNode(withName: "title") as? SKLabelNode
+        sushiBasePiece = childNode(withName: "sushiBasePiece") as? SushiPiece
+        healthBar = childNode(withName: "healthBar") as? SKSpriteNode
+        scoreLabel = childNode(withName: "scoreLabel") as? SKLabelNode
+        highScoreLabel = childNode(withName: "highScoreLabel") as? SKLabelNode
+        character = childNode(withName: "character") as? Character
         
         /* UI game objects */
-        playButton = childNode(withName: "playButton") as! MSButtonNode
+        playButton = childNode(withName: "playButton") as? MSButtonNode
         
         /* Setup chopstick connection */
         sushiBasePiece.connectChopsticks()
@@ -244,10 +244,10 @@ class GameScene: SKScene {
         playButton.selectedHandler = {
             
             /* Grab reference to the SpriteKit view */
-            let skView = self.view as SKView!
+            let skView = self.view as SKView?
             
             /* Load Game scene */
-            guard let scene = GameScene(fileNamed: "GameScene") as GameScene! else {
+            guard let scene = GameScene(fileNamed: "GameScene") as GameScene? else {
                 return
             }
             
